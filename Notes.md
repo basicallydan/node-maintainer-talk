@@ -80,7 +80,9 @@ This is pretty useful if you're using `npm shrinkwrap`, because it will remove a
 
 This is pretty cool: not only will `npm version` update the version code in `package.json`, it'll also create a new git commit for the version, and a new git tag at that commit that looks like `v1.3.2`, a common convention for version tags on GitHub.
 
-<!-- MORE HERE -->
+`npm version` takes an option to specify what type of a version bump this is: Major, meaning a change which alters existing APIs in some way; Minor, meaning an addition or change which does not modify existing APIs; and patch, usually meaning a bug fix, or some refactoring which does not affect behaviour. For example, if you've added some new config options you might use `npm version minor` - but if you change the `generateCheese` function to be called `curdleSomeCheese`, then it's a major change because it changes an existing API.
+
+Since `npm version` creates a git commit, then you can specify a commit message. Just like with `git commit`, you can do this with the `-m` flag.
 
 ### A pre-publish checklist
 
@@ -97,6 +99,10 @@ So, let's go through a quick checklist of what to do when you've got a new versi
 
 ### Interacting with your community
 
-<!-- Make sure to reply to pull requests and issues: a reply telling them that you've seen it is better than leaving it for weeks without saying anything -->
+This, again, is some general advice to do with open-source. Once you start open-sourcing your work and people start opening issues and pull requests, you've created a small community. Remember that in this community are real people with real feelings, who put real time into making your project a little bit better.
 
-<!-- Makefile to build stuff -->
+With that in mind, I think it is of huge importance to publicly recognise contributions. I normally make either a `contributors.md` file or put a list of contributors directly in the `README` with links to GitHub profiles so that they get a little bit of exposure for their projects when people see their names on yours. Also, whenever a new version is cut, if someone's hard work contributed to the completion of that version, I like to recognise them in the Changelog too.
+
+I guarantee you that if you do this, not only will you encourage more contributors, you'll get a warm, fuzzy feeling inside, and so will your new open-source-co-workers.
+
+People also need to be responded to as quickly as possible. If someone opens an issue or a pull request, you shouldn't put it off for weeks. I think it's safe to say that because you're doing this work for free, nobody expects you to treat it like a full-time job. But if you get a second simply to tell someone that their issue or PR has been seen, it's a nice thing to do. Nobody likes to be ignored! And if someone's PR isn't going to be merged, you should be honest: tell them so, and why it isn't going to happen. Perhaps they can fix a couple of things in their fork and then try again.
