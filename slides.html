@@ -26,8 +26,14 @@ class:topic-header
 .important[
 **Note:** This is the way *I* do things. It'll probably work for you, but maybe not. I don't know.
 
-Heckle me later.
+Heckle me later. Or maybe give me more useful tips about the subject.
 ]
+
+---
+
+# Scenario
+
+Let's say you're a developing a module which will create an LNUG talk for you and make it really interesting and a huge success.
 
 ---
 
@@ -44,8 +50,8 @@ class:topic-header
 A lot of the time there's no need to restrict your target audience to just NodeJS developers. You may be writing browser-friendly code without even realising it. Think about the ways that your module might be used in browsers.
 
 ```bash
-browserify index.js > randomCheeseGenerator.js
-uglify randomCheeseGenerator.js > randomCheeseGenerator.min.js
+browserify index.js > lnugTalkGenerator.js
+uglify lnugTalkGenerator.js > lnugTalkGenerator.min.js
 ```
 
 --
@@ -194,7 +200,7 @@ That's because the developer didn't use `npm shrinkwrap`.
 
 # Good Dependency Management
 
-`npm prune` is a command which will remove any modules you have installed but not currently in the `dependencies` or `devDependencies` sections of `package.json`.
+`npm prune` is a command which will remove any modules you have installed in the `node_modules` folder but not currently in the `dependencies` or `devDependencies` sections of `package.json`.
 
 This is a handy thing to use *before* you run `npm shrinkwrap`. If you run `npm shrinkwrap` and get an `extraneous` error, then it's because you have non-saved dependencies. Either save them, or `npm prune` them out of your project.
 
@@ -202,7 +208,7 @@ This is a handy thing to use *before* you run `npm shrinkwrap`. If you run `npm 
 
 # Good Dependency Management
 
-On the other hand, if your project has a bunch of dependencies that you've `npm install`ed but forgot to `--save`, you might want to fix that. You can use the package `require-analyzer` to analyse your codebase to find un-save directories. Get it on npm, of course:
+On the other hand, if your project has a bunch of dependencies that you've `npm install`ed but forgot to `--save`, you might want to fix that. You can use the package `require-analyzer` to analyse your codebase to find un-saved modules. Get it on npm, of course:
 
 ```bash
 npm install -g require-analyzer
@@ -279,8 +285,8 @@ class:topic-header
 
 1. Figure out what the next version is, and remember that. If you're currently on 0.23.3 and it's a bugfix/patch, it'll be 0.23.4 next.
 2. Update the changelog either in `README.md` or `CHANGELOG.md`. Add an entry for the day you're publishing, saying what the change was.
-3. Make sure your dependencies are locked down. Run `npm prune` then `npm shrinkwrap --dev`.
-4. If you're targeting the front-end, compile your code using `browserify`
+3. Make sure your dependencies are locked down. Run `npm prune`, a `require-analyzer` and then `npm shrinkwrap --dev`.
+4. If you're targeting browsers, compile using `browserify` and maybe `uglify`
 5. Commit these changes, you don't need to mention the version code yet...
 6. Run `npm version` with `major`, `minor`, or `patch` and a message, using `-m` - this will be your commit message.
 7. Do a quick `git push`
@@ -317,9 +323,13 @@ This will not only will you encourage more contributors, but you'll get a warm, 
 
 ## Respond as quickly as possible
 
-For people to respect the work you've done and know that you care a little about it, I think it's important to respond to issues and pull requests quickly.
+* Responding quickly to issues and pull requests shows care and respect
+* This doesn't mean reading huge comments and replying with huge comments immediately
+* Simply, "Hey, thanks for your PR - I've seen it and I'll give it a proper read as soon as I can! Thanks!" will do.
 
-This doesn't mean reading in-depth the moment they're received and replying with a comprehensive comment about why their pull request isn't adequate and how they can improve it: that can wait. A simple "Hey, thanks for your PR - I've seen it and I'll give it a proper read as soon as I can! Thanks!" will do.
+<!-- For people to respect the work you've done and know that you care about it, I think it's important to respond to issues and pull requests quickly. -->
+
+<!-- This doesn't mean reading in-depth the moment they're received and replying with a comprehensive comment about why their pull request isn't adequate and how they can improve it: that can wait. -->
 
 ---
 
@@ -341,9 +351,16 @@ It's better that it's kept up-to-date with the help of others than floundering u
 
 ---
 
+# Finally: Be excellent to one another
+
+Even if people are dicks to you in your issues and pull requests section, they are probably either frustrated, tired, or unaware that they are talking to a real person. Turn the other cheek and be nice, they might just be nice back.
+
+---
+
 class: topic-header
 
-# Thanks!
+# Thanks
+## Good luck with your modules!
 
 ## I also sometimes blog about Node and JavaScript on my website, [danhough.com](http://danhough.com), and tweet about it too [@basicallydan](https://twitter.com/basicallydan).
 
