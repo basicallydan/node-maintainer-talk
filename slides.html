@@ -41,14 +41,16 @@ class:topic-header
 
 # Target *everybody*
 
-A lot of the time there's no need to restrict your target audience to just NodeJS developers. What about our friends on the front line?!
+A lot of the time there's no need to restrict your target audience to just NodeJS developers. You may be writing browser-friendly code without even realising it. Think about the ways that your module might be used in browsers.
 
 ```bash
 browserify index.js > randomCheeseGenerator.js
 uglify randomCheeseGenerator.js > randomCheeseGenerator.min.js
 ```
 
-Now stick that code in your browser!
+--
+
+**HOWEVER:** Make sure you dependencies are browser-safe!
 
 ---
 
@@ -62,7 +64,12 @@ class:topic-header
 
 # The art of a good **README**
 
-They're called READMEs for a reason: someone looking at your project for the first time should be given all the information they need to get started with it.
+They're called READMEs for a reason: someone looking at your project for the first time should be given all the information they need to get started with it. More broadly, what's the purpose of the README? It tells prospective users the following:
+
+1. That it's *legit*
+2. How to use it
+3. Whether it's going to be maintained and kept up-to-date
+4. Whether it's reliable enough to use in production
 
 ---
 
@@ -87,7 +94,7 @@ You need:
 You need:
 
 * Examples... in JavaScript, **not** CoffeeScript.
-* A changelog
+* A proper changelog - don't rely on git commit logs
 
 ---
 
@@ -96,8 +103,8 @@ You need:
 You need:
 
 * Examples... in JavaScript, **not** CoffeeScript.
-* A changelog
-* How to test
+* A proper changelog - don't rely on git commit logs
+  * `18e6513 Fixed fuck ups` is not a change log entry
 
 ---
 
@@ -106,8 +113,20 @@ You need:
 You need:
 
 * Examples... in JavaScript, **not** CoffeeScript.
-* A changelog
-* How to test
+* A proper changelog - don't rely on git commit logs
+  * `18e6513 Fixed fuck ups` is not a change log entry
+* How to test - ideally it should be as simple as `npm test`
+
+---
+
+# The art of a good **README**
+
+You need:
+
+* Examples... in JavaScript, **not** CoffeeScript.
+* A proper changelog - don't rely on git commit logs
+  * `18e6513 Fixed fuck ups` is not a change log entry
+* How to test - ideally it should be as simple as `npm test`
 * How to compile
 
 ---
@@ -117,8 +136,9 @@ You need:
 You need:
 
 * Examples... in JavaScript, **not** CoffeeScript.
-* A changelog
-* How to test
+* A proper changelog - don't rely on git commit logs
+  * `18e6513 Fixed fuck ups` is not a change log entry
+* How to test - ideally it should be as simple as `npm test`
 * How to compile
 * **VERY IMPORTANT:** How to contribute
 
@@ -129,8 +149,9 @@ You need:
 You need:
 
 * Examples... in JavaScript, **not** CoffeeScript.
-* A changelog
-* How to test
+* A proper changelog - don't rely on git commit logs
+  * `18e6513 Fixed fuck ups` is not a change log entry
+* How to test - ideally it should be as simple as `npm test`
 * How to compile
 * **VERY IMPORTANT:** How to contribute
 * **Write it in Markdown**
@@ -167,7 +188,7 @@ That's because the developer didn't use `npm shrinkwrap`.
 
 # Good Dependency Management
 
-**Note:** By default, `npm shrinkwrap` will not include `devDependencies`. To include these you've gotta run `npm shrinkwrap --dev`. This means people cloning from the source will get the `shrinkwrap`ped dependencies.
+**Note:** By default, `npm shrinkwrap` will not include `devDependencies`. To include these you've gotta run `npm shrinkwrap --dev`. This means people cloning from the source will get the `shrinkwrap`ped development dependencies *and* the regular, non-dev ones.
 
 ---
 
@@ -176,6 +197,19 @@ That's because the developer didn't use `npm shrinkwrap`.
 `npm prune` is a command which will remove any modules you have installed but not currently in the `dependencies` or `devDependencies` sections of `package.json`.
 
 This is a handy thing to use *before* you run `npm shrinkwrap`. If you run `npm shrinkwrap` and get an `extraneous` error, then it's because you have non-saved dependencies. Either save them, or `npm prune` them out of your project.
+
+---
+
+# Good Dependency Management
+
+On the other hand, if your project has a bunch of dependencies that you've `npm install`ed but forgot to `--save`, you might want to fix that. You can use the package `require-analyzer` to analyse your codebase to find un-save directories. Get it on npm, of course:
+
+```bash
+npm install -g require-analyzer
+# Go to your project folder, run:
+require-analyzer
+# It will update package.json for you
+```
 
 ---
 
