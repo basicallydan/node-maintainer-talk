@@ -52,6 +52,21 @@ img {
   width:100%;
 }
 
+.full-image-background-slide {
+  background-size: contain;
+  background-color:black;
+  color:white;
+  -webkit-text-stroke:black;
+}
+
+.full-image-background-slide .remark-slide-number {
+  color:white;
+}
+
+.full-image-background-slide {
+  background-image:url(../img/be-excellent.gif);
+}
+
 /*.remark-slide-content:after {
   visibility: hidden;
   display: block;
@@ -273,6 +288,10 @@ ul li {
 
 .twitter {
   font-weight:bold;
+  position:absolute;
+  font-size:0.8rem;
+  right:3.5rem;
+  bottom:0.5rem;
 }
 
 .autoimage img {
