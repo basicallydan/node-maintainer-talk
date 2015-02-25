@@ -1,4 +1,4 @@
-# I'm a node module maintainer and so can you!
+# I'm a Node Module Maintainer (And So Can You!)
 
 I'm going to share with you some of the lessons I've picked up as a developer and maintainer of two or three NodeJS modules available on NPM, and from watching what others do with *their* projects. Naturally, this is just going to be the way that *I* do things. Others may have completely different ways, some of which I might find a lot better. But since this is me sharing my knowledge, please don't take it to mean that I believe it is necessarily the best way. I'm going to instruct you on how *I* would develop, organise and maintain a NodeJS module, and you can decide for yourself if it's compatible with your way of working.
 
@@ -13,7 +13,7 @@ I'm going to share with you some of the lessons I've picked up as a developer an
 
 ### I've written my Node module. Now what?
 
-Congratulations, you've finished a fine piece of work. Your module, `randomCheeseGenerator`, is going to enrich the programming lives of hundreds of dairy enthusiasts.
+Congratulations, you've finished a fine piece of work. Your module, `lnugTalkGenerator`, is going to make it easy for potential LNUG speakers to create new talks.
 
 But they can't benefit from your excellent work unless they know:
 
@@ -23,13 +23,13 @@ But they can't benefit from your excellent work unless they know:
 - ✓ Whether it's going to be maintained and kept up-to-date
 - ✓ Whether it's reliable enough to use in production
 
-The first step to take is to make sure you're exposing your interface for generating random cheese in a logical way. Random Cheese Generator is suitable both for use as a global module, on the command line, and in other peoples' code, through JavaScript.
+The first step to take is to make sure you're exposing your interface for generating LNUG talks in a logical way. LNUG Talk Geenrator is suitable both for use as a global module, on the command line, and in other peoples' code, through JavaScript.
 
 So it needs to have both a command-line interface (CLI) and a JavaScript API.
 
 It's time to get organised. Put all the meaty bits of code into a `lib` folder in your project, and make a new file in the root of the project called `index.js`.
 
-While the `index.js` file is crucially important to getting your command-line users their random cheeses as quickly as possible, we need to sort out the JavaScript API first.
+While the `index.js` file is crucially important to getting your command-line users their LNUG talks as quickly as possible, we need to sort out the JavaScript API first.
 
 ### Target Everyone
 
@@ -38,8 +38,8 @@ Examine your dependencies. Are any of them not going to be suitable for use in a
 By using a tool like Browserify you can compile your code into a single JavaScript file to be used in front-end projects. Stick this in a `/bin` or `/dist` folder, and don't forget to ugilify it too!
 
 ```
-browserify index.js > randomCheeseGenerator.js
-uglify randomCheeseGenerator.js > randomCheeseGenerator.min.js
+browserify index.js > lnugTalkGenerator.js
+uglify lnugTalkGenerator.js > lnugTalkGenerator.min.js
 ```
 
 ### The Art of a good README
@@ -80,7 +80,7 @@ This is pretty useful if you're using `npm shrinkwrap`, because it will remove a
 
 This is pretty cool: not only will `npm version` update the version code in `package.json`, it'll also create a new git commit for the version, and a new git tag at that commit that looks like `v1.3.2`, a common convention for version tags on GitHub.
 
-`npm version` takes an option to specify what type of a version bump this is: Major, meaning a change which alters existing APIs in some way; Minor, meaning an addition or change which does not modify existing APIs; and patch, usually meaning a bug fix, or some refactoring which does not affect behaviour. For example, if you've added some new config options you might use `npm version minor` - but if you change the `generateCheese` function to be called `curdleSomeCheese`, then it's a major change because it changes an existing API.
+`npm version` takes an option to specify what type of a version bump this is: Major, meaning a change which alters existing APIs in some way; Minor, meaning an addition or change which does not modify existing APIs; and patch, usually meaning a bug fix, or some refactoring which does not affect behaviour. For example, if you've added some new config options you might use `npm version minor` - but if you change the `generateLNUGTalk` function to be called `writeBrilliantLNUGTalk`, then it's a major change because it changes an existing API.
 
 Since `npm version` creates a git commit, then you can specify a commit message. Just like with `git commit`, you can do this with the `-m` flag.
 
