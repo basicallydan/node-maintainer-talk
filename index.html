@@ -194,7 +194,9 @@ That's because the developer didn't use `npm shrinkwrap`.
 
 # Good Dependency Management
 
-`npm shrinkwrap` is a command which will create a file recording the module's dependencies at the exact point they are at in the current directory. So while `package.json` may have a requirement for `"request": "^2.42.0"`, `npm-shrinkwrap.json` will contain *specifically* version 2.42.0 if that's what you have installed.
+`npm shrinkwrap` creates a file recording the module's dependencies at the exact point they are at in the current directory.
+
+White `package.json` may have a requirement for `"request": "^2.42.0"`, `npm-shrinkwrap.json` will contain *specifically* version 2.42.0 if that's what you have installed.
 
 1. You `shrinkwrap` your module with version `2.42.0`
 2. `request` gets upgraded to `2.42.1`, `2.42.2`, etc. which are all theoretically compatible with 2.42.0
@@ -204,7 +206,9 @@ That's because the developer didn't use `npm shrinkwrap`.
 
 # Good Dependency Management
 
-**Note:** By default, `npm shrinkwrap` will not include `devDependencies`. To include these you've gotta run `npm shrinkwrap --dev`. This means people cloning from the source will get the `shrinkwrap`ped development dependencies *and* the regular, non-dev ones.
+**Note:** By default, `npm shrinkwrap` will not include `devDependencies`. To include these you've gotta run `npm shrinkwrap --dev`.
+
+This means people cloning from the source will get the `shrinkwrap`ped development dependencies *and* the regular, non-dev ones.
 
 ---
 
@@ -212,13 +216,17 @@ That's because the developer didn't use `npm shrinkwrap`.
 
 `npm prune` is a command which will remove any modules you have installed in the `node_modules` folder but not currently in the `dependencies` or `devDependencies` sections of `package.json`.
 
-This is a handy thing to use *before* you run `npm shrinkwrap`. If you run `npm shrinkwrap` and get an `extraneous` error, then it's because you have non-saved dependencies. Either save them, or `npm prune` them out of your project.
+Run this *before* `npm shrinkwrap`.
+
+If you run `npm shrinkwrap` and get an `extraneous` error, it's because you have unsaved dependencies. Either: save them, or `npm prune` them out of your project.
 
 ---
 
 # Good Dependency Management
 
-On the other hand, if your project has a bunch of dependencies that you've `npm install`ed but forgot to `--save`, you might want to fix that. You can use the package `require-analyzer` to analyse your codebase to find un-saved modules. Get it on npm, of course:
+On the other hand, if your module has dependencies that you've `npm install`ed but forgot to `--save`, you might want to fix that.
+
+You can use the package `require-analyzer` to analyse your codebase to find un-saved modules. Get it on npm, of course:
 
 ```bash
 npm install -g require-analyzer
@@ -239,7 +247,7 @@ class:topic-header
 
 # Versioning
 
-Semantic Versioning, aka SemVer, is the way we version JavaScript modules. If you aren't doing it, you're ruining the ecosystem for everyone else. **No excuses!**
+Semantic Versioning, aka SemVer, is the way we version modules on npm. If you aren't doing it, you're ruining the ecosystem for everyone else. **No excuses!**
 
 How does Semantic Versioning work? Here's a primer on the basics: `major.minor.patch`, e.g. `1.2.3`
 
