@@ -305,12 +305,14 @@ ul li {
   float:right;
 }
 
-.twitter {
+a.twitter {
   font-weight:bold;
   position:absolute;
   font-size:0.8rem;
   right:3.5rem;
   bottom:0.5rem;
+  color:inherit;
+  text-decoration: none;
 }
 
 .autoimage img {
