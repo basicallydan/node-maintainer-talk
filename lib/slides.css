@@ -175,6 +175,10 @@ ul li {
   text-align:center;
 }
 
+.remark-slide-content h1 {
+  font-size:3.3rem;
+}
+
 .topic-header h2 {
   text-align:center;
 }
