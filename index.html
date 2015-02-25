@@ -29,6 +29,10 @@ class:topic-header
 **Note:** This is the way *I* do things. It'll probably work for you, but maybe not. I don't know.
 
 Heckle me later. Or maybe give me more useful tips about the subject.
+
+.smaller.central[
+  (by the way, you can follow the slides at http://basicallydan.github.io/node-maintainer-talk/)
+]
 ]
 
 ---
@@ -59,6 +63,10 @@ uglify lnugTalkGenerator.js > lnugTalkGenerator.min.js
 --
 
 **HOWEVER:** Make sure you dependencies are browser-safe!
+
+.smaller[
+  See [browserify.org](http://browserify.org) and [github.com/mishoo/UglifyJS](http://github.com/mishoo/UglifyJS).
+]
 
 ---
 
@@ -231,7 +239,7 @@ class:topic-header
 
 # Versioning
 
-First off, in case you aren't familiar with it, Semantic Versioning, aka SemVer, is the way we version JavaScript modules. If you aren't doing it, you're ruining the ecosystem for everyone else. No excuses!
+Semantic Versioning, aka SemVer, is the way we version JavaScript modules. If you aren't doing it, you're ruining the ecosystem for everyone else. **No excuses!**
 
 How does Semantic Versioning work? Here's a primer on the basics: `major.minor.patch`, e.g. `1.2.3`
 
@@ -285,12 +293,12 @@ class:topic-header
 
 # A pre-publish checklist
 
-1. Figure out what the next version is, and remember that. If you're currently on 0.23.3 and it's a bugfix/patch, it'll be 0.23.4 next.
-2. Update the changelog either in `README.md` or `CHANGELOG.md`. Add an entry for the day you're publishing, saying what the change was.
-3. Make sure your dependencies are locked down. Run `npm prune`, a `require-analyzer` and then `npm shrinkwrap --dev`.
+1. Determine next version. E.g. For `0.23.3`, a bugfix/patch means `0.23.4` is next.
+2. Update changelog (e.g. in `README.md` or `CHANGELOG.md`) with new entry, e.g.<br>`v3.3.0 (2015-02-25) Added wakeAudienceUp function.`
+3. Make sure dependencies are locked down. Run `npm prune`, then `require-analyzer`, then `npm shrinkwrap --dev`.
 4. If you're targeting browsers, compile using `browserify` and maybe `uglify`
-5. Commit these changes, you don't need to mention the version code yet...
-6. Run `npm version` with `major`, `minor`, or `patch` and a message, using `-m` - this will be your commit message.
+5. Commit these changes, don't mention the version code yet...
+6. Run `npm version [major|minor|patch]` with a message (`-m`) e.g.<br>`npm version -m "v3.3.0 wakeAudienceUp() function added"`
 7. Do a quick `git push`
 8. You're done! `npm publish` will push changes to npm. Well done!
 
@@ -339,7 +347,13 @@ This will not only will you encourage more contributors, but you'll get a warm, 
 
 ## Respond honestly
 
-If you receive an issue with a feature request and think immediately, "I don't want this in my module", then say so sooner rather than later: be honest with the person and close the issue.
+* Don't want to include a feature request?
+  * Tell them - no need to beat about the bush
+* Spotted some stylistic no-nos?
+  * Point them out, make suggestions
+* Don't forget to be polite, grateful, and prepared for debate
+
+<!-- If you receive an issue with a feature request and think immediately, "I don't want this in my module", then say so sooner rather than later: be honest with the person and close the issue. -->
 
 ---
 
@@ -347,9 +361,14 @@ If you receive an issue with a feature request and think immediately, "I don't w
 
 ## Take on extra help, and/or quit!
 
-If you're losing interest in the project and the issues are piling up, get in touch with some of the people who've contributed, or advertise on places like Hacker News, Reddit or the LNUG Gitter channel that you're looking for maintainers to help with or take over your project.
+Losing interest? Too many issues piling up? Try:
 
-It's better that it's kept up-to-date with the help of others than floundering under your sole ownership.
+* Get in touch with contributors to find co-maintainers, or someone to take over
+* Ask around on Hacker News, Reddit or the LNUG Gitter Channel for help
+
+--
+
+> It's better that the project is properly maintained with the help of others than floundering under your sole ownership.
 
 ---
 
